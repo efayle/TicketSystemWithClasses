@@ -13,9 +13,14 @@ namespace TicketSystemWithClasses
         public string ticketAssigner { get; set; }
         public List<string> ticketWatchers { get; set; }
 
+        public Ticket()
+        {
+            ticketWatchers = new List<string>();
+        }
+
         public string Display()
         {
-            return $"ID: {ticketID}\nSummary: {ticketSummary}\nStatus: {ticketStatus}\nPriority: {ticketPriority}\nSubmitter: {ticketSubmitter}\nAssigner: {ticketAssigner}\nWatcher: {string.Join(",", ticketWatchers)}\n";
+            return $"ID: {ticketID}\nSummary: {ticketSummary}\nStatus: {ticketStatus}\nPriority: {ticketPriority}\nSubmitter: {ticketSubmitter}\nAssigner: {ticketAssigner}\nWatcher: {string.Join(", ", ticketWatchers)}\n";
         }
     }
 }

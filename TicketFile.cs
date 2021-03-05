@@ -43,5 +43,21 @@ namespace TicketSystemWithClasses
             }
         
         }
+
+        public void AddTicket(Ticket ticket)
+        {
+            try
+            {
+                StreamWriter sw = new StreamWriter(filePath, append: true);
+                sw.WriteLine("{0},{1},{2},{3},{4},{5},{6}", ticket.ticketID, ticket.ticketSummary, ticket.ticketStatus, ticket.ticketPriority, ticket.ticketSubmitter, ticket.ticketAssigner, string.Join("|", ticket.ticketWatchers));
+                sw.Close();
+
+                Tickets.Add(ticket);
+            }
+            catch (Exception ex) 
+            {
+                logger.Error(ex.Message);
+            }
+        }
     }
 }

@@ -24,6 +24,48 @@ namespace TicketSystemWithClasses
                     {
                         Console.WriteLine(t.Display());
                     }
+                } else if (choice == "2") {
+                    Ticket ticket = new Ticket();
+                    
+                    for (int i = 0; i < 10; i++) {
+                        
+                        Console.WriteLine("Do you want to create a ticket? (y or n) ");
+                        string response = Console.ReadLine().ToUpper();
+                        if (response != "Y"){
+                            break;
+                        }
+
+                        Console.WriteLine("Enter ticket ID");
+                        ticket.ticketID = Convert.ToInt32(Console.ReadLine());
+
+                        Console.WriteLine("Enter ticket summary");
+                        ticket.ticketSummary = Console.ReadLine();
+
+                        Console.WriteLine("Enter ticket status");
+                        ticket.ticketStatus = Console.ReadLine();
+
+                        Console.WriteLine("Enter ticket priority");
+                        ticket.ticketPriority = Console.ReadLine();
+                        
+                        Console.WriteLine("Enter ticket submitter");
+                        ticket.ticketSubmitter = Console.ReadLine();
+
+                        Console.WriteLine("Enter who is assigned for this ticket");
+                        ticket.ticketAssigner = Console.ReadLine();
+
+                        
+                        int totalTicketWatched = 0;
+                        Console.WriteLine("How many people are watching this ticket");
+                        totalTicketWatched = Convert.ToInt32(Console.ReadLine());
+                        if (totalTicketWatched != 0) {
+                            for (int j = 0; j < totalTicketWatched; j++) {
+                                Console.WriteLine("Who is watching this ticket");
+                                ticket.ticketWatchers.Add(Console.ReadLine());
+                            }
+                       }
+                    }
+
+                    ticketFile.AddTicket(ticket);
                 }
 
             } while (choice == "1" || choice == "2");
